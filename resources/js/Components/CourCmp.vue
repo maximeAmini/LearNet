@@ -1,0 +1,38 @@
+<template>
+    <div
+        class="w-full lg:w-5/12 m-4 p-4 border border-gray-600 shadow transform hover:scale-110 transition duration-500 ease-in-out">
+        <div class="flex flex-wrap items-center justify-center">
+            <h1 class="w-4/6 text-lg font-extrabold">{{this.cour.title}}</h1>
+            <span class="w-2/6 text-xs font-extrabold text-gray-500 text-center">le {{this.date}}</span>
+        </div>
+        <p class="mt-8 text-sm">{{this.cour.discription.substr(0, 200)+"..."}}</p>
+        <div class="flex flex-wrap items-center justify-center">
+            <span class="text-green-800 mr-1">{{this.cour.episodes_count}} épisodes</span> |
+            <span class="text-red-900 ml-1">20 participant</span>
+            <jet-nav-link :href="route('cours.show',{'id':this.cour.id})"
+                class="transition duration-500 ease-in-out border border-blue-700 text-white mt-4 px-4 py-2 hover:bg-blue-800 ml-auto">
+                Voir le cours
+            </jet-nav-link>
+        </div>
+        <p class="w-2/6 text-xs font-extrabold text-gray-700">Par: {{this.cour.user.name}}</p>
+    </div>
+</template>
+
+<script>
+    import JetNavLink from '@/Jetstream/NavLink'
+    export default {
+        components: {
+            JetNavLink,
+        },
+        props: {
+            'cour': Object
+        },
+        computed: {
+            date() {
+                const date = new Date(this.cour.created_at)
+                return date.toLocaleString()
+            }
+        }
+    }
+
+</script>
