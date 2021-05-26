@@ -1,6 +1,8 @@
 <template>
     <div class="p-4 border-t border-gray-600">
-        <a href="" class="hover:text-green-800">{{this.episode.title}}</a>
+        <inertia-link :href="route('episode.show',{'id':this.episode.cours_id})" class="hover:text-green-800">
+            {{this.episode.title}}
+        </inertia-link>
     </div>
 </template>
 

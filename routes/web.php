@@ -20,6 +20,20 @@ Route::group(['auth:sanctum', 'verified'], function(){
     Route::get('/dashboard',function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-    
+
+    Route::prefix('/cours')->group(function () {
+        Route::get('/{id}', 'App\Http\Controllers\CoursController@show')->name('cours.show');
+    });
+
+    Route::prefix('/episodes')->group(function () {
+        Route::get('/{id}','App\Http\Controllers\EpisodesController@show')->name('episode.show');
+    });
+
+
+
+    /*
     Route::get('/cours/{id}','App\Http\Controllers\CoursController@show')->name('cours.show');
+    Route::get('/episode/{id}/','App\Http\Controllers\EpisodesController@show')->name('episode.show');
+    */
+
 });

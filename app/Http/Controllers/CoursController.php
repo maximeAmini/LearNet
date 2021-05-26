@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\cours;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class CoursController extends Controller
