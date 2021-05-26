@@ -1,74 +1,42 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
-        <jet-validation-errors class="mb-4" />
-
-        <form @submit.prevent="submit">
-            <div>
-                <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-                <jet-label for="terms">
-                    <div class="flex items-center">
-                        <jet-checkbox name="terms" id="terms" v-model:checked="form.terms" />
-
-                        <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                        </div>
-                    </div>
-                </jet-label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
-                </inertia-link>
-
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </jet-button>
-            </div>
+    <div class="flex flex-col content-center justify-center items-center h-screen dark:bg-gray-900 dark:text-white">
+        <x-jet-validation-errors class="mb-4" />
+        <h1 class="text-2xl font-bold">Crée un compte</h1>
+        <form @submit.prevent="submit" class="w-4/12">
+            <!-- Name input -->
+            <label for="name" class="block mb-1">Nom</label>
+            <input type="text" id="name" name="name" class="mb-4 input" placeholder="Nom" v-model="form.name" required
+                autofocus>
+            <!-- Email input -->
+            <label for="email" class="block mb-1">Email</label>
+            <input type="text" id="email" name="email" class="mb-4 input" placeholder="Email" v-model="form.email"
+                required>
+            <!-- pass input -->
+            <label for="password" class="block mb-1">Mot de passe</label>
+            <input type="password" id="password" name="password" class="mb-4 input" placeholder="Mot de passe"
+                v-model="form.password" required>
+            <!-- Passconfirmation input -->
+            <label for="password_confirmation" class="block mb-1">Confirmez le mot de passe</label>
+            <input type="password_confirmation" id="password_confirmation" name="password_confirmation"
+                class="mb-4 input" placeholder="Confirmez le mot de passe" v-model="form.password_confirmation"
+                required>
+            <!-- Button -->
+            <input type="submit"
+                class="cursor-pointer bg-green-500 text-white mt-4 px-4 py-2 rounded hover:bg-green-600 float-right"
+                value="Crée le compte">
+            <!-- Link -->
+            <inertia-link :href="route('login')" class="text-blue-600 hover:text-blue-900 text-xs mt-8 block">
+                Vous avez déja un compte ?
+            </inertia-link>
         </form>
-    </jet-authentication-card>
+    </div>
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetCheckbox from "@/Jetstream/Checkbox";
-    import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
     export default {
         components: {
-            JetAuthenticationCard,
-            JetAuthenticationCardLogo,
-            JetButton,
-            JetInput,
-            JetCheckbox,
-            JetLabel,
             JetValidationErrors
         },
 
@@ -92,4 +60,5 @@
             }
         }
     }
+
 </script>

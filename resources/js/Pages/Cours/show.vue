@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <div class="w-full mb-10  border border-gray-600 shadow">
+        <div class="w-full border border-gray-600 shadow">
             <div class="p-4">
                 <div class="flex flex-wrap items-center justify-center">
                     <h1 class="w-4/6 text-lg font-extrabold">{{this.cour.title}}</h1>
