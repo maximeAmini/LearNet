@@ -11,7 +11,8 @@
                 <!--Infos sur la video-->
                 <div class="w-full">
                     <h1 class="flex w-full items-center justify-center text-xl lg:text-lg font-extrabold py-4">
-                        {{this.episodes[this.idEp].title}}
+                        {{this.episodes[this.idEp].title}} 
+                        <Done-btn :epId="this.episodes[this.idEp].id" :watched="this.watched"/>
                         <div class="w-2/6 text-xs font-extrabold text-gray-500 ml-auto text-right">
                             le :{{new Date(this.episodes[this.idEp].created_at).toLocaleString()}}
                         </div>
@@ -30,7 +31,7 @@
             <div class=" pl-2 w-full lg:w-2/6">
                 <ul class="border-b border-r border-l border-gray-300 dark:border-gray-600 h-96 overflow-hidden">
                     <h3
-                        class="text-xl font-extrabold p-4 border-t border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700">
+                        class="text-xl font-extrabold p-4 border-t border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-700">
                         Les épisodes:<i class="far fa-chevron-down"></i> <br>
                         <span class="text-sm">{{this.idEp+1}}/{{this.episodes.length}}</span>
                     </h3>
@@ -50,12 +51,15 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import DoneBtn from '@/Components/DoneBtn'
     export default {
         components: {
             AppLayout,
+            DoneBtn,
         },
         props: {
-            'cour': Object
+            'cour': Object,
+            'watched': Object
         },
         data() {
             return {

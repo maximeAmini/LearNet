@@ -13,4 +13,6 @@ class Episodes extends Model
     public function cour(){
         return $this->belongsTo(Cours::class);
     }
+
+    
 }

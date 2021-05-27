@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div>
-                <Episode v-for="ep in this.cour.episodes" v-bind:key="ep.id" :episode='ep' />
+                <Episode v-for="ep in this.cour.episodes" v-bind:key="ep.id" :episode='ep' :idUser="this.cour.user_id" :watched="this.watched" />
             </div>
             <div>
 
@@ -30,10 +30,11 @@
     export default {
         components: {
             AppLayout,
-            Episode
+            Episode,
         },
         props: {
-            'cour': Object
+            'cour': Object,
+            'watched': Object
         },
         computed: {
             date() {
