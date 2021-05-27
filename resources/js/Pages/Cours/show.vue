@@ -14,6 +14,7 @@
                     <p class="w-2/6 text-xs font-extrabold text-gray-700  ml-auto text-right">Par: {{this.cour.user.name}}</p>
                 </div>
             </div>
+            <Prog-bar :episodes="this.cour.episodes" :watched="this.watched"/>
             <div>
                 <Episode v-for="ep in this.cour.episodes" v-bind:key="ep.id" :episode='ep' :idUser="this.cour.user_id" :watched="this.watched" />
             </div>
@@ -27,10 +28,12 @@
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Episode from '@/Components/EpisodesCmp'
+    import ProgBar from '@/Components/ProgBar'
     export default {
         components: {
             AppLayout,
             Episode,
+            ProgBar
         },
         props: {
             'cour': Object,

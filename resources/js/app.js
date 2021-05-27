@@ -7,6 +7,10 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 const el = document.getElementById('app');
 
+/*import mitt from 'mitt';
+const eventBus = mitt();
+app.config.globalProperties.emitter = eventBus;*/
+
 createApp({
     render: () =>
         h(InertiaApp, {
@@ -17,5 +21,6 @@ createApp({
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
     .mount(el);
+
 
 InertiaProgress.init({ color: '#4B5563' });

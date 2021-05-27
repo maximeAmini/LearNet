@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'dark' => env('DARK_MOD', 'dark'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
