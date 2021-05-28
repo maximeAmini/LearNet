@@ -42,8 +42,7 @@ class CoursController extends Controller
         return Inertia::render('Cours/add');
     }
 
-    public function store(Request $req)
-    {
+    public function store(Request $req){
         $new = Cours::create($req->all());
 
         return Redirect::route('cours.show',['id'=>$new->id]);

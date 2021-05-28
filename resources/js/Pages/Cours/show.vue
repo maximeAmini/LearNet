@@ -11,16 +11,20 @@
 
                 <div class="mt-4 flex flex-wrap items-center justify-center">
                     <span class="text-red-900 ml-1">{{this.cour.part}} participant</span>
-                    <p class="w-2/6 text-xs font-extrabold text-gray-700  ml-auto text-right">Par: {{this.cour.user.name}}</p>
+                    <p class="w-2/6 text-xs font-extrabold text-gray-700  ml-auto text-right">Par:
+                        {{this.cour.user.name}}</p>
                 </div>
             </div>
-            <Prog-bar v-if="this.cour.episodes.length!=0" :episodes="this.cour.episodes" :watched="this.watched"/>
+            <Prog-bar v-if="this.cour.episodes.length!=0" :episodes="this.cour.episodes" :watched="this.watched" />
             <div>
-                <Episode v-for="(ep,index) in this.cour.episodes" v-bind:key="ep.id" :episode='ep' :idUser="this.cour.user_id" :watched="this.watched" :index="index" />
+                <Episode v-for="(ep,index) in this.cour.episodes" v-bind:key="ep.id" :episode='ep'
+                    :idUser="this.cour.user_id" :watched="this.watched" :index="index" />
             </div>
-            <div>
-
-            </div>
+        </div>
+        <div class="my-4">
+            <inertia-link :href="route('episode.add',{'id':this.cour.id})"
+                class="transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white float-right">
+                Ajouter un épisode</inertia-link>
         </div>
     </app-layout>
 </template>

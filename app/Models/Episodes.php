@@ -10,6 +10,8 @@ class Episodes extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','discription', 'video_url','cours_id'];
+
     public function cour(){
         return $this->belongsTo(Cours::class);
     }

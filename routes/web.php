@@ -29,6 +29,8 @@ Route::group(['auth:sanctum', 'verified'], function(){
             //pour les episodes
             Route::prefix('/episodes')->group(function () {
                 Route::get('/', 'App\Http\Controllers\CoursController@show')->name('cours.show');
+                Route::get('/add','App\Http\Controllers\EpisodesController@add')->name('episode.add');
+                Route::post('/add','App\Http\Controllers\EpisodesController@store')->name('episode.store');
                 Route::get('/{idE}','App\Http\Controllers\EpisodesController@show')->name('episode.show');
             });//end episodes prifix
 
