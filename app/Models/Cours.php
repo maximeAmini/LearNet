@@ -11,6 +11,14 @@ class Cours extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','discription'];
+
+    protected static function booted(){
+        static::creating(function($cours){
+            $cours->user_id=auth()->id();
+        });
+    } 
+
     public function episodes(){
         return $this->hasMany(Episodes::class);
     }

@@ -17,8 +17,9 @@
                             le :{{new Date(this.episodes[this.idEp].created_at).toLocaleString()}}
                         </div>
                     </h1>
+                    <!--Utilisateur-->
                     <div class="w-full flex flex-wrap items-center justify-center py-4 border-t border-gray-300">
-                        <img src="@/img/user.png" class="cursor-pointer rounded-full h-8 w-8" />
+                        <img :src="this.cour.user.profile_photo_url" class="cursor-pointer rounded-full h-8 w-8" />
                         <h3 class="text-lg font-extrabold ml-1">{{this.cour.user.name}}</h3>
                         <button class="transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white ml-auto">
                             Abonnée
@@ -59,12 +60,13 @@
         },
         props: {
             'cour': Object,
-            'watched': Object
+            'watched': Object,
+            'idE': Number
         },
         data() {
             return {
                 episodes: this.cour.episodes,
-                idEp: 0
+                idEp:this.idE
             }
         },
         methods: {

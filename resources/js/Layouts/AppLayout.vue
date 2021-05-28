@@ -36,7 +36,7 @@
                             <div class="ml-3 relative">
                                 <jet-dropdown align="right" width="48">
                                     <template #trigger>
-                                        <img src="@/img/user.png" class="cursor-pointer rounded-full h-8 w-8" />
+                                        <img :src="this.user.profile_photo_url" class="cursor-pointer rounded-full h-8 w-8" />
                                     </template>
 
                                     <template #content>
@@ -197,7 +197,7 @@
             JetNavLink,
             JetResponsiveNavLink,
         },
-
+        props: ['user'],
         data() {
             return {
                 showingNavigationDropdown: false,

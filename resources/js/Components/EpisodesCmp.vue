@@ -1,6 +1,6 @@
 <template>
     <div class="p-4 flex items-center justify-center border-t border-gray-600">
-        <inertia-link :href="route('episode.show',{'id':this.episode.cours_id})" class="hover:text-green-800 transition duration-500 ease-in-out">
+        <inertia-link :href="route('episode.show',{'id':this.episode.cours_id, 'idE':this.index})" class="hover:text-green-800 transition duration-500 ease-in-out">
             {{this.episode.title}}
         </inertia-link>
         <Set-btn v-if="$page.props.user.id==this.idUser"/>
@@ -18,6 +18,7 @@
         },
         props: {
             'episode': Object,
+            'index': Number,
             'idUser': Number,
             'watched': Object
         }
