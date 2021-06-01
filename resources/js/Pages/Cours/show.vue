@@ -15,6 +15,7 @@
                         {{this.cour.user.name}}</p>
                 </div>
             </div>
+            {{this.cour.update}}
             <Prog-bar v-if="this.cour.episodes.length!=0" :episodes="this.cour.episodes" :watched="this.watched" />
             <div>
                 <Episode v-for="(ep,index) in this.cour.episodes" v-bind:key="ep.id" :episode='ep'

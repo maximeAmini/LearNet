@@ -1,7 +1,8 @@
 <template>
     <app-layout>
         <h1>Hello</h1>
-        {{this.watched}}
+
+        {{this.cours}}
     </app-layout>
 </template>
 
@@ -12,9 +13,8 @@
         components: {
             AppLayout,
         },
-        prop:{
+        props:{
             cours: Object,
-            watched: Object
         }
     }
 </script>

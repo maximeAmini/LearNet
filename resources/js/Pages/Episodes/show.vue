@@ -4,7 +4,7 @@
             <!--La video-->
             <div class="w-full lg:w-4/6">
                 <iframe class="h-52 sm:h-96 w-full"
-                    src="https://www.youtube.com/embed/SlX03hcCayE?list=PLeeuvNW2FHVjrsrvuVZwyqNIyDvYNn33E"
+                    :src="this.episodes[this.idEp].video_url"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>

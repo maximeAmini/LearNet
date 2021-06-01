@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <div class="w-full">
-            <h1 class="text-2xl font-bold">Crée une formation</h1>
+            <h1 class="text-2xl font-bold">modifier une formation</h1>
             <div class="w-full flex items-center justify-center">
                 <form @submit.prevent="submit" class="mt-4 w-8/12 items-center">
                     <!-- Name input -->
@@ -15,8 +15,7 @@
                     <!-- Button -->
                     <input type="submit"
                         class="cursor-pointer bg-green-500 text-white mt-4 px-4 py-2 rounded hover:bg-green-600 float-right"
-                        value="Crée la formation">
-                      <!--  <div v-if="$page.errors.title">{{$page.errors.title[0]}}</div> -->
+                        value="Modifier la formation">
                 </form>
             </div>
         </div>
@@ -31,17 +30,20 @@
         components: {
             AppLayout,
         },
+        props:{
+            cour: Object
+        },
         data() {
             return {
                 form: {
-                    title: '',
-                    discription: '',
+                    title: this.cour.title,
+                    discription: this.cour.discription,
                 }
             }
         },
         methods:{
             submit(){
-                Inertia.post('/cours/add', this.form)
+                Inertia.patch('/cours/'+this.cour.id+'/edit',this.form)
             }
         }
     }

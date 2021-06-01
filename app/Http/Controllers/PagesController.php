@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\DB;
 class PagesController extends Controller
 {
     public function dashboard(){
-        $watched = ['hey'=> 'hello'];
-        $cours=  Cours::with('user')
-        ->withCount('episodes')->latest()->get();
-
-        return Inertia::render('Dashboard', ['cours'=>$cours, 'watched'=>$watched]);
+        $cours = Cours::with('user')->withCount('episodes')->where('user_id',auth()->id())->latest()->get();
+        //dd($cours);
+        return Inertia::render('Dashboard', ['cours'=>$cours]);
     }
 }

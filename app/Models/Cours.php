@@ -6,6 +6,7 @@ use App\Models\Episodes;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 class Cours extends Model
 {
@@ -13,11 +14,17 @@ class Cours extends Model
 
     protected $fillable = ['title','discription'];
 
+    protected $appends = ['update'];
+
     protected static function booted(){
         static::creating(function($cours){
             $cours->user_id=auth()->id();
         });
     } 
+
+    public function getUpdateAttribute(){
+        //return Gate::can('update-cours',$this);
+    }
 
     public function episodes(){
         return $this->hasMany(Episodes::class);

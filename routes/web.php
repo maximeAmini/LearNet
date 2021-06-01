@@ -12,32 +12,32 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+//home
 Route::get('/cours','App\Http\Controllers\CoursController@index')->name('cours');
-
+//routes qui s'affiche que quand on est connecter
 Route::group(['auth:sanctum', 'verified'], function(){
-
     Route::get('/dashboard','App\Http\Controllers\PagesController@dashboard')->name('dashboard');
-
     //pour les cours
     Route::prefix('/cours')->group(function () {
         Route::get('/add', 'App\Http\Controllers\CoursController@add')->name('cours.add');
         Route::post('/add', 'App\Http\Controllers\CoursController@store')->name('cours.add');
-
+        // cours/idCours
         Route::prefix('/{id}')->group(function () {
             Route::get('/', 'App\Http\Controllers\CoursController@show')->name('cours.show');
+            Route::get('/edit', 'App\Http\Controllers\CoursController@edit')->name('cours.edit');
+            Route::patch('/edit', 'App\Http\Controllers\CoursController@update')->name('cours.edit');
             //pour les episodes
             Route::prefix('/episodes')->group(function () {
-                Route::get('/', 'App\Http\Controllers\CoursController@show')->name('cours.show');
                 Route::get('/add','App\Http\Controllers\EpisodesController@add')->name('episode.add');
                 Route::post('/add','App\Http\Controllers\EpisodesController@store')->name('episode.store');
-                Route::get('/{idE}','App\Http\Controllers\EpisodesController@show')->name('episode.show');
+                // episoides/idEp
+                Route::prefix('/{idE}')->group(function () {
+                    Route::get('/','App\Http\Controllers\EpisodesController@show')->name('episode.show');
+                    Route::get('/edit', 'App\Http\Controllers\EpisodesController@edit')->name('episode.edit');
+                    Route::patch('/edit', 'App\Http\Controllers\EpisodesController@update')->name('episode.edit');
+                });//end id ep prefix
             });//end episodes prifix
-
         });//end cours/id prefix
-
     });//end cours prefix
-
     Route::post('/episodes/ToggelProg','App\Http\Controllers\EpisodesController@toggelProg')->name('episode.toggel');
-
 });
