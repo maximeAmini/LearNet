@@ -16712,7 +16712,8 @@ __webpack_require__.r(__webpack_exports__);
     'episode': Object,
     'index': Number,
     'idUser': Number,
-    'watched': Object
+    'watched': Object,
+    'allowed': Boolean
   }
 });
 
@@ -19138,7 +19139,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"]), _ctx.$page.props.user.id == this.idUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Set_btn, {
+  , ["href"]), this.allowed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Set_btn, {
     key: 0,
     idC: this.episode.cours_id,
     idE: this.episode.id
@@ -22541,34 +22542,44 @@ var _hoisted_4 = {
   "class": "w-4/6 text-lg font-extrabold"
 };
 var _hoisted_5 = {
+  key: 0,
+  "class": "w-2/6 text-xs text-right"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" | ");
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier ");
+
+var _hoisted_8 = {
+  key: 1,
   "class": "w-2/6 text-xs font-extrabold text-gray-500 text-right"
 };
-var _hoisted_6 = {
+var _hoisted_9 = {
   "class": "mt-8 text-sm"
 };
-var _hoisted_7 = {
+var _hoisted_10 = {
   "class": "mt-4 flex flex-wrap items-center justify-center"
 };
-var _hoisted_8 = {
+var _hoisted_11 = {
   "class": "text-red-900 ml-1"
 };
-var _hoisted_9 = {
+var _hoisted_12 = {
   "class": "w-2/6 text-xs font-extrabold text-gray-700  ml-auto text-right"
 };
-var _hoisted_10 = {
+var _hoisted_13 = {
   "class": "my-4"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ajouter un épisode");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ajouter un épisode");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
   var _component_Prog_bar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Prog-bar");
 
   var _component_Episode = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Episode");
-
-  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -22576,17 +22587,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.title), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_5, "le " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.date), 1
+      ), _this.cour.update.allowed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+        onClick: _cache[1] || (_cache[1] = function () {
+          return _ctx.supp && _ctx.supp.apply(_ctx, arguments);
+        }),
+        "class": "cursor-pointer text-red-500 hover:text-red-600 text-right"
+      }, "Supprimé"), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        href: _ctx.route('cours.edit', {
+          'id': _this.cour.id
+        }),
+        "class": "cursor-pointer text-green-500 hover:text-green-600 text-right"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_7];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["href"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_8, "le " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.date), 1
       /* TEXT */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.discription), 1
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.discription), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.part) + " participant", 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.part) + " participant", 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_9, "Par: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.user.name), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_12, "Par: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.user.name), 1
       /* TEXT */
-      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.update) + " ", 1
-      /* TEXT */
-      ), _this.cour.episodes.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Prog_bar, {
+      )])]), _this.cour.episodes.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Prog_bar, {
         key: 0,
         episodes: _this.cour.episodes,
         watched: _this.watched
@@ -22598,20 +22626,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           episode: ep,
           idUser: _this.cour.user_id,
           watched: _this.watched,
-          index: index
+          index: index,
+          allowed: _this.cour.update.allowed
         }, null, 8
         /* PROPS */
-        , ["episode", "idUser", "watched", "index"]);
+        , ["episode", "idUser", "watched", "index", "allowed"]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('episode.add', {
           'id': _this.cour.id
         }),
         "class": "transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white float-right"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_11];
+          return [_hoisted_14];
         }),
         _: 1
         /* STABLE */

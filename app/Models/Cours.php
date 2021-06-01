@@ -23,7 +23,7 @@ class Cours extends Model
     } 
 
     public function getUpdateAttribute(){
-        //return Gate::can('update-cours',$this);
+        return Gate::inspect('update',$this);
     }
 
     public function episodes(){
