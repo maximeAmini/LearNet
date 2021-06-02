@@ -16,7 +16,7 @@ Route::get('/', function () {
 Route::get('/cours','App\Http\Controllers\CoursController@index')->name('cours');
 //routes qui s'affiche que quand on est connecter
 Route::group(['auth:sanctum', 'verified'], function(){
-    Route::get('/dashboard','App\Http\Controllers\PagesController@dashboard')->name('dashboard');
+    Route::get('/dashboard','App\Http\Controllers\UserController@dashboard')->name('dashboard');
     //pour les cours
     Route::prefix('/cours')->group(function () {
         Route::get('/add', 'App\Http\Controllers\CoursController@add')->name('cours.add');

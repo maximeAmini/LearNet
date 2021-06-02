@@ -14,7 +14,14 @@
                 Voir le cours
             </inertia-link>
         </div>
-        <p class="w-2/6 text-xs font-extrabold text-gray-700">Par: {{this.cour.user.name}}</p>
+        <span v-if="this.cour.update.allowed" class="w-2/6 text-xs text-right">
+            <inertia-link :href="route('cours.edit',{'id':this.cour.id})"
+                class="cursor-pointer text-green-500 hover:text-green-600 text-right">
+                Modifier
+            </inertia-link> |
+            <a @click="supp" class="cursor-pointer text-red-500 hover:text-red-600 text-right">Supprimé</a>
+        </span>
+        <p v-else class="w-2/6 text-xs font-extrabold text-gray-700">Par: {{this.cour.user.name}}</p>
     </div>
 </template>
 
@@ -31,6 +38,11 @@
             date() {
                 const date = new Date(this.cour.created_at)
                 return date.toLocaleString()
+            }
+        },
+        methods:{
+            supp(){
+                this.$inertia.delete(route('cours.delete',{'id':this.cour.id}));
             }
         }
     }

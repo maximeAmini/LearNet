@@ -1,7 +1,7 @@
 <template>
     <div v-if="canLogin" class="p-4 flex items-center w-full inset-x-0 top-0 z-20 text-white fixed">
         <div class="text-2xl font-bold mr-6 flex items-center">
-            <img class="w-8 mr-2" src="@/img/logo.png" />LearNet
+            <img class="block pl-4 h-9 w-auto" src="@/img/logo.png" />
         </div>
         <div class="ml-auto">
             <inertia-link v-if="$page.props.user" href="/dashboard" class="text-gray-200 hover:text-green-600">

@@ -15,6 +15,7 @@
         crossorigin="anonymous" />
 
     <!-- Styles -->
+    <link rel="icon" type="image/x-icon" href="images/icone.ico" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- Scripts -->
