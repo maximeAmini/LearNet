@@ -64,6 +64,14 @@ class EpisodesController extends Controller
 
         $episode->update($req->all());
 
-        return Redirect::route('cours.show',['id'=>$id]);
+        return Redirect::route('cours.show',['id'=>$idC]);
+    }
+    //pour supprimé un episode
+    public function destroy(int $idC, int $idE){
+        $cour= Cours::where('id',$idC);
+        //$this->authorize('update',$cour);
+        $episode= Episodes::where('id',$idE);
+        $episode->delete();
+        return Redirect::route('cours.show',['id'=>$idC]);
     }
 }

@@ -73,4 +73,11 @@ class CoursController extends Controller
 
         return Redirect::route('cours.show',['id'=>$id]);
     }
+    //pour supp un cours
+    public function destroy(int $id){
+        $cour= Cours::where('id',$id);
+        //$this->authorize('update',$cour);
+        $cour->delete();
+        return  Redirect::route('cours');
+    }
 }

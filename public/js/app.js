@@ -16773,6 +16773,14 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     idC: Number,
     idE: Number
+  },
+  methods: {
+    supp: function supp() {
+      this.$inertia["delete"](route('episode.delete', {
+        'id': this.idC,
+        'idE': this.idE
+      }));
+    }
   }
 });
 
@@ -18284,6 +18292,13 @@ __webpack_require__.r(__webpack_exports__);
       var date = new Date(this.cour.created_at);
       return date.toLocaleString();
     }
+  },
+  methods: {
+    supp: function supp() {
+      this.$inertia["delete"](route('cours.delete', {
+        'id': this.cour.id
+      }));
+    }
   }
 });
 
@@ -19207,7 +19222,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "fas fa-trash text-red-800"
+  "class": "fas fa-trash text-red-800 cursor-pointer"
 }, null, -1
 /* HOISTED */
 );
@@ -19230,17 +19245,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "",
-    "class": "mr-2"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+  , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.supp && $options.supp.apply($options, arguments);
     }),
-    _: 1
-    /* STABLE */
-
-  })]);
+    "class": "mr-2"
+  }, [_hoisted_3])]);
 }
 
 /***/ }),
@@ -22546,9 +22556,9 @@ var _hoisted_5 = {
   "class": "w-2/6 text-xs text-right"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" | ");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier ");
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Modifier ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" | ");
 
 var _hoisted_8 = {
   key: 1,
@@ -22587,26 +22597,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.title), 1
       /* TEXT */
-      ), _this.cour.update.allowed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-        onClick: _cache[1] || (_cache[1] = function () {
-          return _ctx.supp && _ctx.supp.apply(_ctx, arguments);
-        }),
-        "class": "cursor-pointer text-red-500 hover:text-red-600 text-right"
-      }, "Supprimé"), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      ), _this.cour.update.allowed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('cours.edit', {
           'id': _this.cour.id
         }),
         "class": "cursor-pointer text-green-500 hover:text-green-600 text-right"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_7];
+          return [_hoisted_6];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_8, "le " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.date), 1
+      , ["href"]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+        onClick: _cache[1] || (_cache[1] = function () {
+          return $options.supp && $options.supp.apply($options, arguments);
+        }),
+        "class": "cursor-pointer text-red-500 hover:text-red-600 text-right"
+      }, "Supprimé")])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", _hoisted_8, "le " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.date), 1
       /* TEXT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.cour.discription), 1
       /* TEXT */
