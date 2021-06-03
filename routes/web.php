@@ -21,6 +21,7 @@ Route::group(['auth:sanctum', 'verified'], function(){
 
     //pour les cours
     Route::resource('/cours', 'App\Http\Controllers\CoursController');
+    Route::get('/search/{search}', 'App\Http\Controllers\CoursController@search');
     
     //pour les episodes
     Route::prefix('/cours/{cour}')->group(function () {

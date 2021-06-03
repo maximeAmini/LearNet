@@ -3,11 +3,12 @@
         <!--Le titre-->
         <div class="w-full flex flex-wrap items-center justify-center mb-4">
             <h1 class="text-xl leading-tight font-extrabold">
-                Liste des Cours
+                resultat de votre recherche
             </h1>
-            <inertia-link :href="route('cours.create')"
-                class="transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white ml-auto">
-                Crée une formation</inertia-link>
+            <form class="p-3 w-full flex flex-wrap items-center justify-center">
+                <input type="search" name="search" id="search" placeholder="Recherche..."
+                    class="py-2 px-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700 w-1/2">
+            </form>
         </div>
         <!--Les cours-->
         <div class="w-full flex flex-wrap items-center justify-center">

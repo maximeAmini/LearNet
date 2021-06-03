@@ -20,7 +20,7 @@ class CoursController extends Controller
             WHERE episodes.cours_id=cours.id
             ) AS part'
             ))
-        ->withCount('episodes')->latest()->get();
+        ->withCount('episodes')->latest()->paginate(6);
 
         return Inertia::render('Cours/index', ['cours'=>$cours]);
     }
@@ -79,5 +79,21 @@ class CoursController extends Controller
         //$this->authorize('update',$cour);
         $cour->delete();
         return  Redirect::route('cours.index');
+    }
+    //pour la recherche
+    public function search(string $data){
+        $cours=Cours::when($data, function($query, $term){
+            $query->where('title','LIKE', '%'.$term.'%'); 
+        })->with('user')
+        ->select('cours.*',DB::raw(
+            '(SELECT COUNT(DISTINCT("user-id"))
+            FROM complitions
+            INER JOIN episodes ON episode_id = episodes.id
+            WHERE episodes.cours_id=cours.id
+            ) AS part'
+            ))
+        ->withCount('episodes')->latest()->paginate(6);
+
+        return Inertia::render('Cours/Search',['cours'=>$cours]);
     }
 }
