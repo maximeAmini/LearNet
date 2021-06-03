@@ -131,7 +131,7 @@
                     },
                     {
                         name: "Liste de formation",
-                        route: 'cours'
+                        route: 'cours.index'
                     },
                 ],
             }

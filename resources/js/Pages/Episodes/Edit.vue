@@ -28,14 +28,16 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import { Inertia } from '@inertiajs/inertia'
+    import {
+        Inertia
+    } from '@inertiajs/inertia'
 
     export default {
         components: {
             AppLayout,
         },
-        props:{
-            id : Number,
+        props: {
+            idC: Number,
             episode: Object
         },
         data() {
@@ -43,14 +45,17 @@
                 form: {
                     title: this.episode.title,
                     discription: this.episode.discription,
-                    video_url:this.episode.video_url,
-                    cours_id: this.id
+                    video_url: this.episode.video_url,
+                    cours_id: this.idC
                 }
             }
         },
-        methods:{
-            submit(){
-                Inertia.patch(route('episode.edit',{'id':this.id, 'idE':this.episode.id}),this.form)
+        methods: {
+            submit() {
+                Inertia.patch(route('episodes.update', {
+                    'cour': this.idC,
+                    'episode': this.episode.id
+                }), this.form)
             }
         }
     }

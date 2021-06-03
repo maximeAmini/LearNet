@@ -9,13 +9,13 @@
         <div class="flex flex-wrap items-center justify-center">
             <span class="text-green-800 mr-1">{{this.cour.episodes_count}} épisodes</span> |
             <span class="text-red-900 ml-1">{{this.cour.part}} participant</span>
-            <inertia-link :href="route('cours.show',{'id':this.cour.id})"
+            <inertia-link :href="route('cours.show',{'cour':this.cour.id})"
                 class="transition duration-500 ease-in-out border border-blue-700 dark:text-white mt-4 px-4 py-2 hover:bg-blue-800 hover:text-white ml-auto">
                 Voir le cours
             </inertia-link>
         </div>
         <span v-if="this.cour.update.allowed" class="w-2/6 text-xs text-right">
-            <inertia-link :href="route('cours.edit',{'id':this.cour.id})"
+            <inertia-link :href="route('cours.edit',{'cour':this.cour.id})"
                 class="cursor-pointer text-green-500 hover:text-green-600 text-right">
                 Modifier
             </inertia-link> |
@@ -45,7 +45,7 @@
         },
         methods: {
             supp() {
-                this.$inertia.delete(route('cours.delete', {
+                this.$inertia.delete(route('cours.destroy', {
                     'id': this.cour.id
                 }));
             }

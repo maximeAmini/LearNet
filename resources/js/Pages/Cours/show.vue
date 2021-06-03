@@ -5,7 +5,7 @@
                 <div class="flex flex-wrap items-center justify-center">
                     <h1 class="w-4/6 text-lg font-extrabold">{{this.cour.title}}</h1>
                     <span v-if="this.cour.update.allowed" class="w-2/6 text-xs text-right">
-                        <inertia-link :href="route('cours.edit',{'id':this.cour.id})"
+                        <inertia-link :href="route('cours.edit',{'cour':this.cour.id})"
                             class="cursor-pointer text-green-500 hover:text-green-600 text-right">
                             Modifier
                         </inertia-link> |
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="my-4" v-if="this.cour.update.allowed">
-            <inertia-link :href="route('episode.add',{'id':this.cour.id})"
+            <inertia-link :href="route('episodes.create',{'cour':this.cour.id})"
                 class="transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white float-right">
                 Ajouter un épisode
             </inertia-link>
@@ -60,7 +60,7 @@
         },
         methods: {
             supp() {
-                this.$inertia.delete(route('cours.delete', {
+                this.$inertia.delete(route('cours.destroy', {
                     'id': this.cour.id
                 }));
             }

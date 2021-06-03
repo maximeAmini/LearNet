@@ -15,7 +15,7 @@ class EpisodesController extends Controller
     public function show(int $id, int $idE){
         $cour = Cours::where('id',$id)->with('user')->with('episodes')->first();
         $watched= auth()->user()->episodes;
-        return Inertia::render('Episodes/show', ['cour'=>$cour, 'watched'=>$watched, 'idE'=>$idE]);
+        return Inertia::render('Episodes/Show', ['cour'=>$cour, 'watched'=>$watched, 'idE'=>$idE]);
     }
     //pour marquer la fin d'un episode
     public function toggelProg(Request $req){
@@ -27,10 +27,10 @@ class EpisodesController extends Controller
         return $user->episodes;
     }
     //afficher le formulair d'ajout d'episodes
-    public function add(int $id){
-        $cour = Cours::where('id',$id)->first();
+    public function create(int $idC){
+        $cour = Cours::where('id',$idC)->first();
         $this->authorize('update',$cour);
-        return Inertia::render('Episodes/add',['id'=>$id]);
+        return Inertia::render('Episodes/Create',['idC'=>$idC]);
     }
     //ajouter les episodes
     public function store(int $id,Request $req){
@@ -45,7 +45,7 @@ class EpisodesController extends Controller
 
         $new = Episodes::create($req->all());
 
-        return Redirect::route('cours.show',['id'=>$new->cours_id]);
+        return Redirect::route('cours.show',['cour'=>$new->cours_id]);
     }
     //pour afficher le formulaire de modifications d'episode
     public function edit(int $idC, int $idE){
@@ -53,10 +53,10 @@ class EpisodesController extends Controller
         $cour = Cours::where('id',$episode->cours_id)->first();
         $this->authorize('update',$cour);
 
-        return Inertia::render('Episodes/Edit', ['id'=>$idC,'episode'=>$episode]);
+        return Inertia::render('Episodes/Edit', ['idC'=>$idC,'episode'=>$episode]);
     }
     //pour modifier un episode
-    public function update(int $id, int $idE, Request $req){
+    public function update(int $idC, int $idE, Request $req){
         $episode = Episodes::where('id',$idE)->first();
         $cour = Cours::where('id',$episode->cours_id)->first();
         $this->authorize('update',$cour);
@@ -69,7 +69,7 @@ class EpisodesController extends Controller
 
         $episode->update($req->all());
 
-        return Redirect::route('cours.show',['id'=>$idC]);
+        return Redirect::route('cours.show',['cour'=>$idC]);
     }
     //pour supprimé un episode
     public function destroy(int $idC, int $idE){
@@ -77,6 +77,6 @@ class EpisodesController extends Controller
         //$this->authorize('update',$cour);
         $episode= Episodes::where('id',$idE);
         $episode->delete();
-        return Redirect::route('cours.show',['id'=>$idC]);
+        return Redirect::route('cours.show',['cour'=>$idC]);
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <div class="w-full">
-            <h1 class="text-2xl font-bold">Crée un épisode pour la formation {{this.id}}</h1>
+            <h1 class="text-2xl font-bold">Crée un épisode pour la formation</h1>
             <div class="w-full flex items-center justify-center">
                 <form @submit.prevent="submit" class="mt-4 w-8/12 items-center">
                     <!-- Name input -->
@@ -35,7 +35,7 @@
             AppLayout,
         },
         props:{
-            id : Number
+            idC : Number
         },
         data() {
             return {
@@ -43,13 +43,13 @@
                     title: '',
                     discription: '',
                     video_url:'',
-                    cours_id: this.id
+                    cours_id: this.idC
                 }
             }
         },
         methods:{
             submit(){
-                Inertia.post(route('episode.store',{'id':this.id}), this.form)
+                Inertia.post(route('episodes.store',{'cour':this.idC}), this.form)
             }
         }
     }

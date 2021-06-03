@@ -39,8 +39,8 @@ class CoursController extends Controller
         return Inertia::render('Cours/show', ['cour'=>$cour, 'watched'=>$watched]);
     }
     //pour afficher le formulaire d'ajout de cours
-    public function add(){
-        return Inertia::render('Cours/add');
+    public function create(){
+        return Inertia::render('Cours/Create');
     }
     //pour ajouter les cours
     public function store(Request $req){
@@ -51,7 +51,7 @@ class CoursController extends Controller
 
         $new = Cours::create($req->all());
 
-        return Redirect::route('cours.show',['id'=>$new->id]);
+        return Redirect::route('cours.show',['cour'=>$new->id]);
     }
     //pour afficher le formulaire de modifications de cours
     public function edit(int $id){
@@ -71,13 +71,13 @@ class CoursController extends Controller
 
         $cour->update($req->all());
 
-        return Redirect::route('cours.show',['id'=>$id]);
+        return Redirect::route('cours.show',['cour'=>$id]);
     }
     //pour supp un cours
     public function destroy(int $id){
         $cour= Cours::where('id',$id);
         //$this->authorize('update',$cour);
         $cour->delete();
-        return  Redirect::route('cours');
+        return  Redirect::route('cours.index');
     }
 }

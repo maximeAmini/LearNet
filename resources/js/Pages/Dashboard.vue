@@ -11,7 +11,7 @@
             <div v-else class="flex justify-center w-full">
                 <div class="w-1/2 mt-4 p-4 rounded-md border border-red-300 bg-red-200 text-gray-600 text-center shadow">
                     Retrouvez tout nos cours
-                    <inertia-link :href="route('cours')" class="text-blue-600 hover:text-blue-500">ici.</inertia-link>
+                    <inertia-link :href="route('cours.index')" class="text-blue-600 hover:text-blue-500">ici.</inertia-link>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div v-else class="flex justify-center w-full">
             <div class="w-1/2 mt-4 p-4 rounded-md border border-green-300 bg-green-200 text-gray-600 text-center shadow">
                 Commencez a crée vos propres cours
-                <inertia-link :href="route('cours.add')" class="text-blue-600 hover:text-blue-500 font-bold">ici.</inertia-link>
+                <inertia-link :href="route('cours.create')" class="text-blue-600 hover:text-blue-500 font-bold">ici.</inertia-link>
             </div>
             </div>
         </div>

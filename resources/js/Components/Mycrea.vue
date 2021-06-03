@@ -10,13 +10,13 @@
         <tbody>
             <tr v-for="cour in this.cours" v-bind:key="cour.id">
                 <td class="border border-gray-200 p-3">
-                    <inertia-link :href="route('cours.show',{'id':cour.id})"
+                    <inertia-link :href="route('cours.show',{'cour':cour.id})"
                         class="text-blue-500 hover:text-blue-400">
                         {{cour.title}}
                     </inertia-link>
                     <br>
                     <span v-if="cour.update.allowed" class="w-2/6 text-xs text-right">
-                        <inertia-link :href="route('cours.edit',{'id':cour.id})"
+                        <inertia-link :href="route('cours.edit',{'cour':cour.id})"
                             class="cursor-pointer text-green-500 hover:text-green-600 text-right">
                             Modifier
                         </inertia-link> |
@@ -36,9 +36,9 @@
             'cours': Object
         },
         methods: {
-            supp(id) {
-                this.$inertia.delete(route('cours.delete', {
-                    'id': id
+            supp(idC) {
+                this.$inertia.delete(route('cours.destroy', {
+                    'cour': idC
                 }));
             }
         }

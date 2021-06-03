@@ -10,7 +10,7 @@
         <tbody>
             <tr v-for="cour in this.cours" v-bind:key="cour.id">
                 <td class="border border-gray-200 p-3">
-                    <inertia-link :href="route('cours.show',{'id':cour.id})" class="text-blue-500 hover:text-blue-400">
+                    <inertia-link :href="route('cours.show',{'cour':cour.id})" class="text-blue-500 hover:text-blue-400">
                         {{cour.title}}
                     </inertia-link>
                 </td>
