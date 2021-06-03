@@ -3,33 +3,32 @@
         <div class="flex flex-wrap w-full">
             <!--La video-->
             <div class="w-full lg:w-4/6">
-                <iframe class="h-52 sm:h-96 w-full"
-                    :src="this.episodes[this.idEp].video_url"
+                <iframe class="h-52 sm:h-96 w-full" :src="this.episodes[this.idEp].video_url"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 <!--Infos sur la video-->
                 <div class="w-full">
                     <h1 class="flex w-full items-center justify-center text-xl lg:text-lg font-extrabold py-4">
-                        {{this.episodes[this.idEp].title}} 
-                        <Done-btn :epId="this.episodes[this.idEp].id" :watched="this.watched"/>
+                        {{this.episodes[this.idEp].title}}
+                        <Done-btn :epId="this.episodes[this.idEp].id" :watched="this.watched" />
                         <div class="w-2/6 text-xs font-extrabold text-gray-500 ml-auto text-right">
                             le :{{new Date(this.episodes[this.idEp].created_at).toLocaleString()}}
                         </div>
                     </h1>
                     <!--Utilisateur-->
                     <div class="w-full flex flex-wrap items-center justify-center py-4 border-t border-gray-300">
-                        <img :src="this.cour.user.profile_photo_url" class="cursor-pointer rounded-full h-8 w-8" />
-                        <h3 class="text-lg font-extrabold ml-1">{{this.cour.user.name}}</h3>
-                        <button class="transition duration-500 ease-in-out border border-green-700 dark:text-white px-4 py-2 hover:bg-green-800 hover:text-white ml-auto">
-                            Abonnée
-                        </button>
+                        <inertia-link :href="route('user.show', {id:this.cour.user.id})" class="flex items-center">
+                            <img :src="this.cour.user.profile_photo_url" class="cursor-pointer rounded-full h-8 w-8" />
+                            <span class="text-lg font-extrabold ml-1">{{this.cour.user.name}}</span>
+                        </inertia-link>
+                        <Follow :idU="this.cour.user.id" />
                     </div>
                     <p>{{this.episodes[this.idEp].discription}}</p>
                 </div>
             </div>
             <!--Les episodes-->
-            <div class=" pl-2 w-full lg:w-2/6">
+            <div class=" pl-2 sm:pt-0 pt-2 w-full lg:w-2/6">
                 <ul class="border-b border-r border-l border-gray-300 dark:border-gray-600 h-96 overflow-hidden">
                     <h3
                         class="text-xl font-extrabold p-4 border-t border-gray-300 dark:border-gray-800 bg-gray-100 dark:bg-gray-700">
@@ -53,10 +52,12 @@
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import DoneBtn from '@/Components/DoneBtn'
+    import Follow from '@/Components/FollowBtn'
     export default {
         components: {
             AppLayout,
             DoneBtn,
+            Follow
         },
         props: {
             'cour': Object,
@@ -66,7 +67,7 @@
         data() {
             return {
                 episodes: this.cour.episodes,
-                idEp:this.idE
+                idEp: this.idE
             }
         },
         methods: {

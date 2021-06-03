@@ -21,7 +21,10 @@
             </inertia-link> |
             <a @click="supp" class="cursor-pointer text-red-500 hover:text-red-600 text-right">Supprimé</a>
         </span>
-        <p v-else class="w-2/6 text-xs font-extrabold text-gray-700">Par: {{this.cour.user.name}}</p>
+        <p v-else class="w-2/6 text-xs font-extrabold text-gray-700">
+            Par:
+            <inertia-link :href="route('user.show', {id:this.cour.user.id})">{{this.cour.user.name}}</inertia-link>
+        </p>
     </div>
 </template>
 
@@ -40,9 +43,11 @@
                 return date.toLocaleString()
             }
         },
-        methods:{
-            supp(){
-                this.$inertia.delete(route('cours.delete',{'id':this.cour.id}));
+        methods: {
+            supp() {
+                this.$inertia.delete(route('cours.delete', {
+                    'id': this.cour.id
+                }));
             }
         }
     }

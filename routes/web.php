@@ -14,9 +14,11 @@ Route::get('/', function () {
 });
 //home
 Route::get('/cours','App\Http\Controllers\CoursController@index')->name('cours');
+
 //routes qui s'affiche que quand on est connecter
 Route::group(['auth:sanctum', 'verified'], function(){
     Route::get('/dashboard','App\Http\Controllers\UserController@dashboard')->name('dashboard');
+    Route::get('/user/{id}','App\Http\Controllers\UserController@show')->name('user.show');
     //pour les cours
     Route::prefix('/cours')->group(function () {
         Route::get('/add', 'App\Http\Controllers\CoursController@add')->name('cours.add');
@@ -25,6 +27,7 @@ Route::group(['auth:sanctum', 'verified'], function(){
         Route::prefix('/{id}')->group(function () {
             Route::get('/', 'App\Http\Controllers\CoursController@show')->name('cours.show');
             Route::get('/edit', 'App\Http\Controllers\CoursController@edit')->name('cours.edit');
+            Route::patch('/edit', 'App\Http\Controllers\CoursController@update')->name('cours.edit');
             Route::delete('/delete', 'App\Http\Controllers\CoursController@destroy')->name('cours.delete');
             //pour les episodes
             Route::prefix('/episodes')->group(function () {

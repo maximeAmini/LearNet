@@ -1,44 +1,39 @@
 <template>
-    <div
-        class="w-full lg:w-3/12 mr-4 my-4 border border-gray-600 shadow transform hover:scale-110 transition duration-500 ease-in-out h-80 overflow-hidden">
-        <div class="text-4xl font-extrabold overflow-hidden bg-green-600 text-green-200 p-4 flex flex-col flex-wrap items-center justify-center shadow-lg h-2/6">
-            {{this.pourc}}%
-            <span class="text-red-200 text-sm text-center">{{this.cour.nbR}}/{{this.cour.nbE}} épisodes etudié</span>
-        </div>
-        <div class="flex flex-wrap p-4">
-            <h1 class="font-extrabold">{{this.cour.title}}</h1>
-            <p class="mt-1 text-sm">{{this.cour.discription.substr(0, 100)+"..."}}</p>
-            <inertia-link :href="route('cours.show',{'id':this.cour.id})"
-                class="transition duration-500 ease-in-out border border-blue-700 dark:text-white mt-4 px-4 py-2 hover:bg-blue-800 hover:text-white ml-auto">
-                Poursuivre le cours
-            </inertia-link>
-        </div>
-    </div>
+    <table class="border-collapse border border-gray-200 table-auto shadow-xl mt-2">
+        <thead>
+            <tr>
+                <th class="border border-gray-200 p-3">Cours</th>
+                <th class="border border-gray-200 p-3">Progression</th>
+                <th class="border border-gray-200 p-3">Nombre d'épisode étudié</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="cour in this.cours" v-bind:key="cour.id">
+                <td class="border border-gray-200 p-3">
+                    <inertia-link :href="route('cours.show',{'id':cour.id})" class="text-blue-500 hover:text-blue-400">
+                        {{cour.title}}
+                    </inertia-link>
+                </td>
+                <td class="border border-gray-200 p-3 text-center">
+                    {{Math.ceil(cour.nbR * 100 / cour.nbE)}}%
+                    <div class="bg-gray-200">
+                        <div class="p-2 bg-green-600" :style='"width:"+Math.ceil(cour.nbR * 100 / cour.nbE)+"%"'></div>
+                    </div>
+                </td>
+                <td class="border border-gray-200 p-3 text-red-700 text-center">{{cour.nbR}}/{{cour.nbE}} terminé</td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
-    import JetNavLink from '@/Jetstream/NavLink'
     export default {
-        components: {
-            JetNavLink,
-        },
         props: {
-            'cour': Object
-        },
-        computed: {
-            date() {
-                const date = new Date(this.cour.created_at)
-                return date.toLocaleString()
-            },
-            pourc() {
-                return this.cour.nbR * 100 / this.cour.nbE
-            }
+            'cours': Object
         },
         methods: {
-            supp() {
-                this.$inertia.delete(route('cours.delete', {
-                    'id': this.cour.id
-                }));
+            pourc(nbR, nbE) {
+                return Math.ceil(nbR * 100 / nbE)
             }
         }
     }

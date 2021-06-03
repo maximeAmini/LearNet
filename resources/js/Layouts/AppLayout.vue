@@ -97,7 +97,7 @@
             </nav>
 
             <!-- Page Content -->
-            <main class="h-full pt-24 px-4 sm:px-20 pb-8 mb-8">
+            <main class="h-full pt-24 px-4 sm:px-20 mb-8">
                 <slot></slot>
             </main>
         </div>

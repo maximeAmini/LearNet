@@ -28,10 +28,15 @@ class EpisodesController extends Controller
     }
     //afficher le formulair d'ajout d'episodes
     public function add(int $id){
+        $cour = Cours::where('id',$id)->first();
+        $this->authorize('update',$cour);
         return Inertia::render('Episodes/add',['id'=>$id]);
     }
     //ajouter les episodes
     public function store(int $id,Request $req){
+        $cour = Cours::where('id',$id)->first();
+        $this->authorize('update',$cour);
+        
         $req->validate([
             'title'=> 'required',
             'discription'=> 'required',
