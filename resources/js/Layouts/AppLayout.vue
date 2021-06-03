@@ -2,7 +2,7 @@
     <div>
         <jet-banner />
 
-        <div class="min-h-screen dark:bg-gray-900 dark:text-white">
+        <div class="min-h-screen">
             <nav class="w-full shadow-lg fixed bg-white dark:bg-gray-900 dark:text-white z-20">
                 <!-- Primary Navigation Menu -->
                 <div class="w-full px-3">

@@ -1,16 +1,13 @@
 <template>
     <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
 
         <div class="mb-4 text-sm text-gray-600">
             <template v-if="! recovery">
-                Please confirm access to your account by entering the authentication code provided by your authenticator application.
+                Veuillez confirmer l'accès à votre compte en saisissant le code d'authentification fourni par votre application d'authentification.
             </template>
 
             <template v-else>
-                Please confirm access to your account by entering one of your emergency recovery codes.
+                Veuillez confirmer l'accès à votre compte en entrant l'un de vos codes de récupération d'urgence.
             </template>
         </div>
 

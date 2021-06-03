@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
 <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased dark:bg-gray-900 dark:text-white">
     @inertia
 </body>
 

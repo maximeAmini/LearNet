@@ -10,9 +10,8 @@
                 <!--Infos sur la video-->
                 <div class="w-full">
                     <h1 class="flex w-full items-center justify-center text-xl lg:text-lg font-extrabold py-4">
-                        {{this.episodes[this.idEp].title}}
-                        <Done-btn :epId="this.episodes[this.idEp].id" :watched="this.watched" />
-                        <div class="w-2/6 text-xs font-extrabold text-gray-500 ml-auto text-right">
+                        <div>{{this.episodes[this.idEp].title}}</div>
+                        <div class="sm:w-2/6 w-full text-xs font-extrabold text-gray-500 ml-auto text-right">
                             le :{{new Date(this.episodes[this.idEp].created_at).toLocaleString()}}
                         </div>
                     </h1>

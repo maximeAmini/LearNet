@@ -1,11 +1,8 @@
 <template>
     <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
 
         <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+            Mot de passe oublié? Aucun problème. Communiquez-nous simplement votre adresse e-mail et nous vous enverrons par e-mail un lien de réinitialisation de mot de passe qui vous permettra d'en choisir un nouveau.
         </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -22,7 +19,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
+                    Envoyé
                 </jet-button>
             </div>
         </form>

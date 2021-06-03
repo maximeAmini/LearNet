@@ -1,8 +1,5 @@
 <template>
     <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
 
         <jet-validation-errors class="mb-4" />
 
@@ -24,7 +21,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Reset Password
+                    réinitialiser le mot de passe
                 </jet-button>
             </div>
         </form>
