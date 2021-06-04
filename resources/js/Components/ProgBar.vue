@@ -26,9 +26,6 @@
                 })
                 return Math.ceil((filter.length * 100) / this.episodes.length)+'%'
             }
-        },
-        mounted() {
-            //eventBus.on('toggelProg', data=>{this.wat=data})
         }
     }
 

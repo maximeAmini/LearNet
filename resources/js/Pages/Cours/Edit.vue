@@ -3,7 +3,7 @@
         <div class="w-full">
             <h1 class="text-2xl font-bold">modifier une formation</h1>
             <div class="w-full flex items-center justify-center">
-                <form @submit.prevent="submit" class="mt-4 w-8/12 items-center">
+                <form @submit.prevent="submit" class="mt-4 w-11/12 sm:w-8/12 items-center">
                     <!-- Name input -->
                     <label for="title" class="block mb-1">Titre:</label>
                     <input type="text" id="title" name="title" class="mb-4 input" placeholder="Apprendre le..."

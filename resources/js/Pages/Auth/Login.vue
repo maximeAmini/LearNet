@@ -7,7 +7,7 @@
         <div class="bg-white shadow-lg max-w-lg max-h-bg md:flex">
             <img src="@/img/cover.jpg" alt="cover" class="flex-1 w-full h-28 object-cover md:h-full">
 
-            <div class="h-80 flex-1 p-4 pt-20 flex flex-col items-center justify-center">
+            <div class="h-80 flex-1 p-4 sm:pt-20 flex flex-col items-center justify-center">
                 <h1 class="text-2xl font-bold text-gray-800">Connexion</h1>
 
                 <form @submit.prevent="submit" class="my-2">

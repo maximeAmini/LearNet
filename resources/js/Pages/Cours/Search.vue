@@ -3,36 +3,46 @@
         <!--Le titre-->
         <div class="w-full flex flex-wrap items-center justify-center mb-4">
             <h1 class="text-xl leading-tight font-extrabold">
-                resultat de votre recherche
+                Resultat pour votre recherche "{{this.search}}"
             </h1>
-            <form class="p-3 w-full flex flex-wrap items-center justify-center">
-                <input type="search" name="search" id="search" placeholder="Recherche..."
-                    class="py-2 px-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700 w-1/2">
-            </form>
+        </div>
+        <div class="flex flex-wrap mb-4 ">
+            <inertia-link :href="route('cours.search',{'search':this.search})"
+                class="transition duration-500 ease-in-out hover:text-green-300 w-1/2 text-center border border-gray-200 p-4"
+                :class="!this.user1? 'bg-green-600 text-white':''">
+                <i class="fas fa-book text-xl"></i>
+            </inertia-link>
+            <inertia-link :href="route('user.search',{'search':this.search})"
+                class="transition duration-500 ease-in-out hover:text-green-300 w-1/2 text-center border border-gray-200 p-4"
+                :class="this.user1? 'bg-green-600 text-white':''">
+                <i class="fas fa-user text-xl"></i>
+            </inertia-link>
         </div>
         <!--Les cours-->
-        <div class="w-full flex flex-wrap items-center justify-center">
-            <Cour v-for="cour in this.cours.data" v-bind:key="cour.id" :cour='cour' />
+        <div v-if="!this.user1" class="w-full flex flex-wrap items-center justify-center">
+            <Cour v-for="cour in this.cours" v-bind:key="cour.id" :cour='cour' />
         </div>
-        <div class="flex items-center">
-            <inertia-link v-if="this.cours.prev_page_url!=null" :href="this.cours.prev_page_url"
-                class=" text-green-700 hover:text-green-500 px-2">Précédent</inertia-link>
-            <inertia-link v-if="this.cours.next_page_url!=null" :href="this.cours.next_page_url"
-                class=" text-green-700 hover:text-green-500 px-2 ml-auto">Suivant</inertia-link>
-        </div>
+        <!--Les users -->
+        <div v-else class="w-full flex flex-wrap items-center justify-center">
+            <User-Profile v-for="cour in this.cours" v-bind:key="cour.id" :user='cour' />
+         </div>
     </app-layout>
 </template>
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Cour from '@/Components/CourCmp'
+    import UserProfile from '@/Components/UserProfile'
     export default {
         components: {
             AppLayout,
-            Cour
+            Cour,
+            UserProfile
         },
         props: {
-            'cours': String
+            cours: Object,
+            search: String,
+            user1: Boolean
         }
     }
 

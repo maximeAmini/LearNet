@@ -45,6 +45,7 @@
         },
         methods: {
             supp() {
+                console.log('ok ptn')
                 this.$inertia.delete(route('cours.destroy', {
                     'id': this.cour.id
                 }));

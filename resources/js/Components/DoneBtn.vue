@@ -29,7 +29,6 @@
                     })
                     .then(rep => {
                         this.vu=!this.vu
-                        //eventBus.emit('toggelProg', rep.data)
                     })
                     .catch(err => {
                         console.log(err)

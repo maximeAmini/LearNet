@@ -21,7 +21,7 @@
                             <img :src="this.cour.user.profile_photo_url" class="cursor-pointer rounded-full h-8 w-8" />
                             <span class="text-lg font-extrabold ml-1">{{this.cour.user.name}}</span>
                         </inertia-link>
-                        <Follow :idU="this.cour.user.id" />
+                        <Follow :idU="this.cour.user.id" :abonne="this.isAbonné" />
                     </div>
                     <p>{{this.episodes[this.idEp].discription}}</p>
                 </div>
@@ -59,14 +59,26 @@
             Follow
         },
         props: {
-            'cour': Object,
-            'watched': Object,
-            'idE': Number
+            cour: Object,
+            watched: Object,
+            idE: Number,
+            abonné: Object
         },
         data() {
             return {
                 episodes: this.cour.episodes,
                 idEp: this.idE
+            }
+        },
+        computed: {
+            isAbonné() {
+                var uu = this.cour.user.id
+                var found = this.abonné.find((el) => el.id === uu)
+                if (found) {
+                    return true;
+                } else {
+                    return false
+                }
             }
         },
         methods: {

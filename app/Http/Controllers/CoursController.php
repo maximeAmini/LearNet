@@ -14,7 +14,7 @@ class CoursController extends Controller
     public function index(){
         $cours = Cours::with('user')
         ->select('cours.*',DB::raw(
-            '(SELECT COUNT(DISTINCT("user-id"))
+            '(SELECT COUNT(DISTINCT("user_id"))
             FROM complitions
             INER JOIN episodes ON episode_id = episodes.id
             WHERE episodes.cours_id=cours.id
@@ -27,7 +27,7 @@ class CoursController extends Controller
     //pour afficher un cours celons son id
     public function show(int $id){
         $cour = Cours::where('id',$id)->with('user')->with('episodes')->select('cours.*',DB::raw(
-            '(SELECT COUNT(DISTINCT("user-id"))
+            '(SELECT COUNT(DISTINCT("user_id"))
             FROM complitions
             INER JOIN episodes ON episode_id = episodes.id
             WHERE episodes.cours_id=cours.id
@@ -86,14 +86,14 @@ class CoursController extends Controller
             $query->where('title','LIKE', '%'.$term.'%'); 
         })->with('user')
         ->select('cours.*',DB::raw(
-            '(SELECT COUNT(DISTINCT("user-id"))
+            '(SELECT COUNT(DISTINCT("user_id"))
             FROM complitions
             INER JOIN episodes ON episode_id = episodes.id
             WHERE episodes.cours_id=cours.id
             ) AS part'
             ))
-        ->withCount('episodes')->latest()->paginate(6);
-
-        return Inertia::render('Cours/Search',['cours'=>$cours]);
+        ->withCount('episodes')->latest()->get();
+        
+        return Inertia::render('Cours/Search',['cours'=>$cours, 'search'=>$data, 'user1'=> false]);
     }
 }

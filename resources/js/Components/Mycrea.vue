@@ -2,7 +2,7 @@
     <table class="border-collapse border border-gray-200 table-auto shadow-xl mt-2">
         <thead>
             <tr>
-                <th class="border border-gray-200 p-3">Cours</th>
+                <th class="border border-gray-200 p-3">Cours crée</th>
                 <th class="border border-gray-200 p-3">Nombre de participants</th>
                 <th class="border border-gray-200 p-3">Nombre d'épisode publié</th>
             </tr>

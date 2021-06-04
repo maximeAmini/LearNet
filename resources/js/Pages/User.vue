@@ -9,7 +9,7 @@
                 </div>
                 <strong class="text-red-800">{{this.cours.length}} cours disponible</strong>
             </div>
-            <Follow :idU="this.user1.id" />
+            <Follow :idU="this.user1.id" :abonne="this.isAbonné"/>
         </div>
         <div class="flex flex-wrap items-center justify-center w-full pt-2">
             <Cour v-for="cour in this.cours" v-bind:key="cour.id" :cour='cour' />
@@ -29,7 +29,19 @@
         },
         props: {
             user1: Object,
-            cours: Object
+            cours: Object,
+            abonné: Object
+        },
+        computed:{
+            isAbonné(){
+                var uu = this.user1.id
+                var found= this.abonné.find((el)=> el.id === uu   )
+                if (found){
+                    return true;
+                }else{
+                    return false
+                }
+            }
         }
     }
 

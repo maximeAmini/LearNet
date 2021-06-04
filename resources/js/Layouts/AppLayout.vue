@@ -3,7 +3,7 @@
         <jet-banner />
 
         <div class="min-h-screen">
-            <nav class="w-full shadow-lg fixed bg-white dark:bg-gray-900 dark:text-white z-20">
+            <nav class="w-full shadow-lg fixed bg-white dark:bg-gray-900 dark:text-white z-10">
                 <!-- Primary Navigation Menu -->
                 <div class="w-full px-3">
                     <div class="flex justify-between h-16">
@@ -42,9 +42,10 @@
                         </div>
 
                         <div class="sm:flex sm:items-center sm:justify-center sm:ml-6">
-                            <form class="lg:flex hidden">
+                            <form @submit.prevent="submit" class="lg:flex hidden">
                                 <input type="search" name="search" id="search" placeholder="Recherche..."
-                                    class="py-1 px-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700">
+                                    class="py-1 px-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700"
+                                    @keyup.enter="submit" v-model="this.search">
                             </form>
                             <!-- Settings Dropdown -->
                             <div class="ml-3 mt-3 mr-3 sm:mt-0 relative">
@@ -58,6 +59,10 @@
                                         <!-- Account Management -->
                                         <jet-dropdown-link :href="route('profile.show')">
                                             Profile
+                                        </jet-dropdown-link>
+
+                                        <jet-dropdown-link :href="route('dark')" @click="toDark">
+                                            dark
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')"
@@ -83,9 +88,10 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}"
                     class="sm:hidden transition duration-500 ease-in-out">
-                    <form class="p-3 w-full">
+                    <form @submit.prevent="submit" class="p-3 w-full">
                         <input type="search" name="search" id="search" placeholder="Recherche..."
-                            class="py-1 px-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700 w-full">
+                            class="py-1 px-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-0 focus:border-green-600 mr-4 bg-gray-100 dark:bg-gray-700 w-full"
+                            @keyup.enter="submit" v-model="this.search">
                     </form>
                     <div class="pt-2 pb-3 space-y-1 pb-1 border-b border-gray-100 dark:border-gray-700">
                         <jet-responsive-nav-link v-for="link in this.links" v-bind:key="link.name"
@@ -111,6 +117,9 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import {
+        Inertia
+    } from '@inertiajs/inertia'
 
     export default {
         components: {
@@ -134,6 +143,7 @@
                         route: 'cours.index'
                     },
                 ],
+                search: ''
             }
         },
 
@@ -149,6 +159,11 @@
             logout() {
                 this.$inertia.post(route('logout'));
             },
+            submit() {
+                Inertia.get(this.route('cours.search', {
+                    search: this.search
+                }))
+            }
         }
     }
 

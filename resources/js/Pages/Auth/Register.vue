@@ -2,7 +2,7 @@
     <div class="flex flex-col content-center justify-center items-center h-screen dark:bg-gray-900 dark:text-white">
         <x-jet-validation-errors class="mb-4" />
         <h1 class="text-2xl font-bold">Crée un compte</h1>
-        <form @submit.prevent="submit" class="w-4/12">
+        <form @submit.prevent="submit" class="w-11/12 sm:w-4/12">
             <!-- Name input -->
             <label for="name" class="block mb-1">Nom</label>
             <input type="text" id="name" name="name" class="mb-4 input" placeholder="Nom" v-model="form.name" required
@@ -17,7 +17,7 @@
                 v-model="form.password" required>
             <!-- Passconfirmation input -->
             <label for="password_confirmation" class="block mb-1">Confirmez le mot de passe</label>
-            <input type="password_confirmation" id="password_confirmation" name="password_confirmation"
+            <input type="password" id="password_confirmation" name="password_confirmation"
                 class="mb-4 input" placeholder="Confirmez le mot de passe" v-model="form.password_confirmation"
                 required>
             <!-- Button -->

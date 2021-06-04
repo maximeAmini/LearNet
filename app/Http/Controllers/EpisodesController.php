@@ -15,7 +15,8 @@ class EpisodesController extends Controller
     public function show(int $id, int $idE){
         $cour = Cours::where('id',$id)->with('user')->with('episodes')->first();
         $watched= auth()->user()->episodes;
-        return Inertia::render('Episodes/Show', ['cour'=>$cour, 'watched'=>$watched, 'idE'=>$idE]);
+        $abonné = auth()->user()->abonnés;
+        return Inertia::render('Episodes/Show', ['cour'=>$cour, 'watched'=>$watched, 'idE'=>$idE,'abonné'=>$abonné]);
     }
     //pour marquer la fin d'un episode
     public function toggelProg(Request $req){
