@@ -60,11 +60,7 @@
                                         <jet-dropdown-link :href="route('profile.show')">
                                             Profile
                                         </jet-dropdown-link>
-
-                                        <jet-dropdown-link :href="route('dark')" @click="toDark">
-                                            dark
-                                        </jet-dropdown-link>
-
+                                        <Dark-Btn />
                                         <jet-dropdown-link :href="route('api-tokens.index')"
                                             v-if="$page.props.jetstream.hasApiFeatures">
                                             API Tokens
@@ -117,6 +113,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import DarkBtn from '@/Components/DarkBtn'
     import {
         Inertia
     } from '@inertiajs/inertia'
@@ -129,6 +126,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            DarkBtn
         },
         props: ['user'],
         data() {

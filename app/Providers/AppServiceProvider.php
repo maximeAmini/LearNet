@@ -30,5 +30,12 @@ class AppServiceProvider extends ServiceProvider
                 return Session::get('errors')? Session::get('errors')->getBag('default')->getMessages() : (object) [];
             },
         ]);
+        view()->composer('app', function ($view) {
+            $theme = \Cookie::get('theme');
+            if ($theme != 'dark' && $theme != 'light') {
+                $theme = 'light';
+            }
+            $view->with('theme', $theme);
+        });
     }
 }

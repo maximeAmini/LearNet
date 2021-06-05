@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-col items-center justify-center z-30">
         <div
-            class="absolute  bg-white shadow-lg w-11/12 sm:w-1/2 z-30 rounded-sm transition-all duration-500 ease-in-out">
-            <div class="p-4 text-xl leading-tight font-extrabold w-full flex items-center border border-gray-200">
+            class="absolute  bg-white dark:bg-gray-900 shadow-lg w-11/12 sm:w-1/2 z-30 rounded-sm transition-all duration-500 ease-in-out">
+            <div class="p-4 text-xl leading-tight font-extrabold w-full flex items-center border border-gray-200 dark:border-gray-700">
                 Les personnes que vous suivez :
                 <a class="ml-auto cursor-pointer" @click="$emit('un-show')"> <i class="fa fa-times"></i></a>
             </div>
